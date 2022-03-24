@@ -1,8 +1,10 @@
 require './cricketer.rb'
 require './scoreboard.rb'
+require './delivery.rb'
+require './exceptions.rb'
 
 # Main method controls general game flow
-def start_menu(target)
+def team_selection
   
   puts "Welcome to the Ruby Cricket Challenge!"
   puts "Please select  your team"
@@ -18,9 +20,35 @@ def start_menu(target)
     opposition_team = 'Australia'
   end
 
+  begin
+  start_game(player_team, opposition_team, 100)
+  rescue InputError => e
+    puts e.message
+    retry
+  end
+
+end
+
+def start_game(player_team, opposition_team, target)
+
   puts "You have chosen to play as #{player_team} against #{opposition_team}."
   puts "#{opposition_team} has batted first. You need to score #{target} runs in 10 overs to win. Goodluck!"
+  puts "Enter 1 to start the game"
+  puts "Enter 2 to view instructions"
+  
+  
+  start_input = gets.chomp.to_i
+  raise(InputError) if start_input.empty?
+    git
+
+  if start_input == 1
+    delivery.bowl
+  elsif start_input == 2
+    instructions
+    end
 end
+
+
 
 
 
@@ -47,7 +75,7 @@ end
 
 #  > 99? "He's got him, he's gone!" : "Nice shot"
 
-
-start_menu(100)
+team_selection
+# start_game(100)
 
 
