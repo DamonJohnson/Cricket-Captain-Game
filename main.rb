@@ -3,11 +3,10 @@ require './scoreboard.rb'
 require './delivery.rb'
 
 
-
 def team_selection
   
   puts "Welcome to the Ruby Cricket Challenge!"
-  puts "Please select  your team"
+  puts "Please select your team"
   puts "1: Australia"
   puts "2: England"
 
@@ -26,7 +25,7 @@ def team_selection
     player_team = 'England'
     opposition_team = 'Australia'
   end
- 
+
   start_game(player_team, opposition_team, 100)
 
 end
@@ -41,7 +40,7 @@ def start_game(player_team, opposition_team, target)
   begin
     start_input = gets.chomp.to_i
   raise(TypeError, 'Invalid Input. Enter 1 to start the game. Enter 2 to view instructions.') unless start_input == 1 or start_input == 2
-  rescue => e
+  rescue => e 
     puts e.message
     retry
   end
@@ -49,38 +48,48 @@ def start_game(player_team, opposition_team, target)
   if start_input == 1
     delivery.bowl
   elsif start_input == 2
-    instructions
+    instructions(target)
     end
 end
 
+def instructions(target)
+  puts "--------------------INSTRUCTIONS--------------------"
+  puts "You need to score #{target} runs in 10 overs (60 balls)."
+  puts "Before each ball, you will need to select a shot."
+  puts "1: defensive shot."
+  puts "2: balanced shot."
+  puts "3: attacking shot."
+  puts "4: very attacking shot."
+  puts "If you play attacking shots you will score faster but there is a higher chance you will be dismissed."
+  puts "Some batsmen are better than others. To see the batting score of each player enter 'scores'"
+  puts "To start the game, enter 1."
 
+  begin
+    instructions_input = gets.to_i
+    raise (TypeError 'Invalid input. Enter 1 to view the batting score of all players. Enter 2 to play the game.') unless instructions_input == 1 or instructions_input == 'scores'
+  rescue => e
+    puts e.message
+    retry
+  end
 
+  if instructions_input == 'scores'
+    scores
+  elsif instructions_input == 1
+    game.start
+  end
 
-
-
-def bat_chance(bat_skill, bat_agg)
-  bat_luck = rand(1..100)
-  (bat_luck * bat_skill) / bat_agg
 end
 
-def bowl_chance(bowl_skill, bowl_agg)
-  bowl_luck = rand(1..100)
-  (bowl_luck * bowl_skill * bowl_agg)
-end
 
-def wicket_chance(bat_skill, bowl_skill, bat_agg, bowl_agg)
-  puts bowl_luck = 1+rand(100)
-  puts bat_luck = 1+rand(100)
-  bowl = 9 * bowl_agg + bowl_skill
-  bat = (1 + bat_skill - bat_agg)
-  bowl / bat
-end
+
+
 
 # puts wicket_chance(0.5, 0.8, 1, 1)
 
 #  > 99? "He's got him, he's gone!" : "Nice shot"
 
-team_selection
+# team_selection
+# instructions(20)
 # start_game(100)
 
 

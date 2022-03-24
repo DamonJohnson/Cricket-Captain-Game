@@ -1,4 +1,3 @@
-require './cricket-game'
 require './cricketer'
 
 describe Cricketer do
@@ -17,7 +16,3 @@ describe Cricketer do
   end
 
 end
-
-describe start_menu do
-  
-
