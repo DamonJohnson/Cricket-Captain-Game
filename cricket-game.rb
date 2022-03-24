@@ -1,16 +1,23 @@
 require './cricketer.rb'
 require './scoreboard.rb'
 require './delivery.rb'
-require './exceptions.rb'
 
-# Main method controls general game flow
+
+
 def team_selection
   
   puts "Welcome to the Ruby Cricket Challenge!"
   puts "Please select  your team"
   puts "1: Australia"
   puts "2: England"
-  team_input = gets.chomp.to_i
+
+  begin
+    team_input = gets.chomp.to_i
+    raise(TypeError, 'Invalid input. Enter 1 to select Australia. Enter 2 to select England.') unless team_input == 1 || team_input == 2
+  rescue => e
+    puts e.message
+  retry
+  end
 
   if team_input == 1
     player_team = 'Australia'
@@ -19,13 +26,8 @@ def team_selection
     player_team = 'England'
     opposition_team = 'Australia'
   end
-
-  begin
+ 
   start_game(player_team, opposition_team, 100)
-  rescue InputError => e
-    puts e.message
-    retry
-  end
 
 end
 
@@ -36,10 +38,13 @@ def start_game(player_team, opposition_team, target)
   puts "Enter 1 to start the game"
   puts "Enter 2 to view instructions"
   
-  
-  start_input = gets.chomp.to_i
-  raise(InputError) if start_input.empty?
-    git
+  begin
+    start_input = gets.chomp.to_i
+  raise(TypeError, 'Invalid Input. Enter 1 to start the game. Enter 2 to view instructions.') unless start_input == 1 or start_input == 2
+  rescue => e
+    puts e.message
+    retry
+  end
 
   if start_input == 1
     delivery.bowl
