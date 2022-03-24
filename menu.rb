@@ -91,8 +91,8 @@ class Menu
         puts "To start the game, enter 1."
 
         begin
-            instructions_input = gets.to_i
-            raise (TypeError 'Invalid input. Enter 1 to view the batting score of all players. Enter 2 to play the game.') unless instructions_input == 1 or instructions_input == 'scores'
+            input = gets.to_i
+            raise (TypeError 'Invalid input. Enter 1 to view the batting score of all players. Enter 2 to play the game.') unless input == 1 or input == 'scores'
         rescue => e
             puts e.message
             retry
@@ -101,7 +101,7 @@ class Menu
         if instructions_input == 'scores'
             scores
         elsif instructions_input == 1
-            this_game.start
+            delivery1 = delivery.new
         end
 
     end
