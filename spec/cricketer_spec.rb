@@ -1,18 +1,30 @@
 require './cricketer'
 
 describe Cricketer do
-    let(:mr_cricket) { Player.new('Mr Cricket', 'Australia', 5) }
-
+  subject(:mr_cricket) { Cricketer.new('Mike Hussey', 'Australia', 10) }
+  
   it 'can be instantiated' do
-    cricketer = Cricketer.new('Steve Smith', 'Australia', 9)
-    expect(cricketer).not_to be_nil
-    expect(cricketer).to be_an_instance_of Cricketer
+    cricketer = Cricketer.new('John Doe', 'Australia', 5)
+    expect(mr_cricket).not_to be_nil
+    expect(mr_cricket).to be_an_instance_of Cricketer
   end
 
-  describe .name do
+  describe '#name' do
     it 'returns the name' do
-    expect(Cricketer.name).to eq ('Mr Cricket')
-    end      
+      expect(mr_cricket.name).to eq ('Mike Hussey')
+    end 
+  end
+
+  describe '#team' do
+    it 'returns the team' do
+      expect(mr_cricket.team).to eq ('Australia')
+    end 
+  end
+
+  describe '#skill' do
+    it 'returns the skill' do
+      expect(mr_cricket.skill).to eq (10)
+    end 
   end
 
 end

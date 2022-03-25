@@ -1,14 +1,13 @@
 class Delivery
-    
+    attr_accessor :batter, :ball_count
 
-    def initialize
-        ball_count += 1
+    def initialize(batter)
+        ball_count =+ 1
+        @batter = batter
     end
     # Generates random number between 1-10 to determine ball scores
-    # Higher ball score is more difficult for the batsmen   
-    def bowl
+    # Higher ball sc+
         
-    end
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
@@ -17,13 +16,12 @@ class Delivery
             raise (TypeError 'Invalid input. Enter 1-4 to select shot or 5 for instructions.') unless shot_input.between?(1,5)
         rescue => e
             puts e.message
-        retry
+            retry
+        
         end
-        if shot_input == 5
-            this_game.instructions
-        end
-            
-
+            if shot_input == 5
+                this_game.instructions
+            end
     end
 
     def outcome

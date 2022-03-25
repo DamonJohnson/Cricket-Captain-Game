@@ -1,17 +1,7 @@
-require './cricketer'
-require './scoreboard'
-require './delivery'
-require './game'
 
 
 def get_input
-    begin
-        input = gets.chomp.to_i
-        raise(TypeError, 'Invalid input. Enter 1 to start new game. Enter 2 to view instructions.') unless input == 1 || input == 2
-    rescue => e
-        puts e.message
-    retry
-    end
+     return input = gets.chomp.to_i
 end
 
 class Menu
@@ -23,15 +13,16 @@ class Menu
     end
 
     def landing_menu
-        puts "Welcome to the Ruby Cricket Challenge!"
+        puts "Welcome to the Ruby Cricket Challenge!"1
+
         puts "1: Start a new game"
         puts "2: View instructions"
         begin
-            input = gets.chomp.to_i
+            input = get_input
             raise(TypeError, 'Invalid input. Enter 1 to start new game. Enter 2 to view instructions.') unless input == 1 || input == 2
         rescue => e
             puts e.message
-        retry
+            retry
         end
         if input == 1
             self.team_selection
@@ -117,3 +108,4 @@ class Menu
 
     end
 end
+

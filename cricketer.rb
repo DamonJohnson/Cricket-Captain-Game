@@ -4,9 +4,9 @@ class Cricketer
   def initialize(name, team, skill)
     @name = name
     @team = team
-    @Skill = skill
+    @skill = skill
   end
-  
+
 end
 
 
