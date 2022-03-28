@@ -1,13 +1,15 @@
 class Delivery
     attr_accessor :batter, :ball_count
+    @@ball_count = 0
 
     def initialize(batter)
-        ball_count =+ 1
+        @@ball_count += 1
         @batter = batter
     end
-    # Generates random number between 1-10 to determine ball scores
-    # Higher ball sc+
-        
+    
+    def self.get_ball_count
+        return @@ball_count
+    end
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
@@ -50,3 +52,8 @@ def wicket_chance(bat_skill, bowl_skill, bat_agg, bowl_agg)
   bat = (1 + bat_skill - bat_agg)
   bowl / bat
 end
+
+delivery1 = Delivery.new('adam')
+delivery2 = Delivery.new('adam')
+puts delivery1.batter
+puts Delivery.get_ball_count
