@@ -14,11 +14,15 @@ class Delivery
     def self.get_ball_count
         return @@ball_count
     end
-
-    # 
+    
+    # Returns a random number between 1 and 5 simulating the quality of the bowler's delivery
+    def bowl
+        ball_quality = 1+rand(5)
+    end
 
     # User selects a shot which determines risk of wicket and scoring potential
-    def shot_selection
+    def get_shot_selection
+        puts "Select your shot!"
         begin
             shot_input = gets.chomp.to_i
             raise (TypeError 'Invalid input. Enter 1-4 to select shot or 5 for instructions.') unless shot_input.between?(1,5)
@@ -30,11 +34,14 @@ class Delivery
             if shot_input == 5
                 this_game.instructions
             end
+        return shot_input
     end
+
     
     # Returns truthy if the batsman is dismissed
     def wicket?
     end
+
 
     # Returns the number of runs scored by the batsman
     def runs
@@ -67,6 +74,7 @@ end
 delivery1 = Delivery.new('adam')
 delivery2 = Delivery.new('adam')
 puts delivery1.batter
-puts Delivery.get_ball_count
+puts delivery1.bowl
+
 
 
