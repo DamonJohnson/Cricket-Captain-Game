@@ -1,15 +1,21 @@
+# Delivery class is used to determine the outcome of ball that is bowled in the game
+
 class Delivery
     attr_accessor :batter, :ball_count
     @@ball_count = 0
 
+    # Everytime the ball is bowled in the game, a new instance of the delivery class is created
     def initialize(batter)
         @@ball_count += 1
         @batter = batter
     end
     
+    # Returns the ball count to determine how long is left in the game
     def self.get_ball_count
         return @@ball_count
     end
+
+    # 
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
@@ -25,8 +31,13 @@ class Delivery
                 this_game.instructions
             end
     end
+    
+    # Returns truthy if the batsman is dismissed
+    def wicket?
+    end
 
-    def outcome
+    # Returns the number of runs scored by the batsman
+    def runs
     end
 
 end
@@ -57,3 +68,5 @@ delivery1 = Delivery.new('adam')
 delivery2 = Delivery.new('adam')
 puts delivery1.batter
 puts Delivery.get_ball_count
+
+

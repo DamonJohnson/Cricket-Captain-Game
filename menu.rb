@@ -3,7 +3,6 @@ require './scoreboard'
 require './delivery'
 require './game'
 
-
 def get_input
     begin
         input = gets.chomp.to_i
@@ -14,6 +13,8 @@ def get_input
     end
 end
 
+# Menu class provides user controlled main methods and controls for the game
+# User can navigate menus with simple integer inputs
 class Menu
     attr_accessor :player_team, :opposition_team
 
@@ -22,6 +23,7 @@ class Menu
         @opposition_team = opposition_team
     end
 
+    # Run at the start of the game to allow the player to start a new game
     def landing_menu
         puts "Welcome to the Ruby Cricket Challenge!"
         puts "1: Start a new game"
@@ -40,6 +42,7 @@ class Menu
         end
     end
 
+    # Allows player to select their team
     def team_selection
         puts "Please select your team"
         puts "1: Australia"
@@ -67,7 +70,7 @@ class Menu
         self.start_game
     end
 
-    # Allows user to start a game or view instructions
+    # Checks if user is ready to start the game after selecting their team or if they'd like to view instructions
     def start_game
         puts "Are you ready?"
         puts "1: Start"
@@ -81,7 +84,8 @@ class Menu
             retry
         end
         if input == 1
-            game.start
+            game = Game.new(player_team, opposition_team)
+            game.play
         elsif input == 2
             self.instructions
         elsif input == 3
@@ -89,6 +93,7 @@ class Menu
         end
     end
 
+    # Displays the instructions on how to control the batsman during the game
     def instructions
         puts "--------------------INSTRUCTIONS--------------------"
         puts "You need to score 100 runs in 10 overs (60 balls)."
@@ -117,3 +122,5 @@ class Menu
 
     end
 end
+
+
