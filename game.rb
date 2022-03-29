@@ -36,13 +36,12 @@ class Game
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
     end
-    
-   
 
     def check_wickets
     end
 
     def self.end_game
+        puts "Congratulations you have won by X wickets"
         puts "Would you like to play again?"
     end
     
