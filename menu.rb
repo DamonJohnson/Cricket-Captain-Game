@@ -127,7 +127,7 @@ class Menu
             retry
         end
         if input == 1
-            game = Game.new(player_team)
+            game = Game.new(player_team, @player_team_name)
             game.play
         elsif input == 2
             self.instructions
