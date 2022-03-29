@@ -55,9 +55,10 @@ class Game
         end
 
         if input == 1
-            "Insert play again method"
+            run = Menu.new(team_australia, team_england)
+            run.landing_menu
         elsif input == 2
-            "Thanks for playing"
+            exit
         end
     end
     

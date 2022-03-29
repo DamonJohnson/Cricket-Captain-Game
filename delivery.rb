@@ -39,7 +39,8 @@ class Delivery
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
-        puts "Select your shot!"
+        puts "Enter your shot type!"
+        puts ""
         begin
             @shot_input = gets.chomp.to_i
             raise (TypeError 'Invalid input. Enter 1-4 to select shot or 5 for instructions.') unless @shot_input.between?(1,5)
@@ -98,40 +99,12 @@ class Delivery
             when 2
                 puts "The bowler swings the bowl away from the #{@batter.name} but he is able to get enough bat on it. They pick up two runs."
             when 1
-                puts "The bowler lands short of a length on leg stump."
+                puts "The bowler lands the ball just short of a length on off stump."
                 puts "#{@batter.name} does well to get it away for single."
-            when 0
+            else
                 puts "A nice delivery by the bowler and #{@batter.name} can't get get the ball away. No run."
             end         
         end
 end
 
-
-
-# p team_australia[0].name
-# test = Delivery.new(team_australia)
-# puts test.get_batter.name
-
-
-
-# test = Delivery.new
-# puts test.get_batter
-
-# def bat_chance(bat_skill, bat_agg)
-#   bat_luck = rand(1..100)
-#   (bat_luck * bat_skill) / bat_agg
-# end
-
-# def bowl_chance(bowl_skill, bowl_agg)
-#   bowl_luck = rand(1..100)
-#   (bowl_luck * bowl_skill * bowl_agg)
-# end
-
-# def wicket_chance(bat_skill, bowl_skill, bat_agg, bowl_agg)
-#   puts bowl_luck = 1+rand(100)
-#   puts bat_luck = 1+rand(100)
-#   bowl = 9 * bowl_agg + bowl_skill
-#   bat = (1 + bat_skill - bat_agg)
-#   bowl / bat
-# end
 

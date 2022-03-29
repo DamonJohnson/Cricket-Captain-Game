@@ -103,10 +103,6 @@ class Menu
         self.target
     end
 
-    def team_names
-
-    end
-
     def target
         puts "You have chosen to play as #{@player_team_name} against #{@opposition_team_name}."
         puts "#{@opposition_team_name} has batted first. You need to score 100 runs in 10 overs to win. Goodluck!"
@@ -146,21 +142,22 @@ class Menu
         puts "3: Attacking shot."
         puts "4: Very attacking shot."
         puts "If you play attacking shots you will score faster but there is a higher chance you will be dismissed."
-        puts "Some batsmen are better than others. To see the batting score of each player enter 'scores' in to the terminal."
+        puts "Some batsmen are better than others. To see the batting score of each player enter 2 in to the terminal."
         puts "To start the game, enter 1."
+
 
         begin
             input = gets.to_i
-            raise (TypeError 'Invalid input. Enter 1 to view the batting score of all players. Enter 2 to play the game.') unless input == 1 or input == 'scores'
+            raise (TypeError 'Invalid input. Enter 1 to play the game. Enter 2 to view the batting score of all players.') unless input == 1 or input == 2
         rescue => e
             puts e.message
             retry
         end
 
-        if instructions_input == 'scores'
-            scores
-        elsif instructions_input == 1
-            delivery1 = delivery.new
+        if input == 1
+            start_game
+        elsif input == 2
+            puts 'scores'
         end
 
     end
