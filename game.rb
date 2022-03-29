@@ -2,7 +2,6 @@ require './delivery.rb'
 require './menu.rb'
 require './cricketer.rb'
 
-
 class Game
     def initialize(player_team)
         @player_team = player_team

@@ -64,6 +64,8 @@ class Delivery
         @batter_skill = @batter.skill
     end
 
+    def get_batter
+    end
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
         puts "Select your shot!"
@@ -125,6 +127,10 @@ end
 # test = Delivery.new(team_australia)
 # puts test.get_batter.name
 
+# def bat_chance(bat_skill, bat_agg)
+#   bat_luck = rand(1..100)
+#   (bat_luck * bat_skill) / bat_agg
+# end
 
 
 # test = Delivery.new
