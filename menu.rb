@@ -1,6 +1,7 @@
 require './cricketer'
 require './delivery'
 require './game'
+require './scorecard'
 
 
 # Initialises the Australian Team

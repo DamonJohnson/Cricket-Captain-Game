@@ -12,7 +12,7 @@ class Scorecard
     end
 
     def runs
-        @total_runs += delivery.runs
+        puts @total_runs += delivery.runs
     end
     
     def runs_remaining
