@@ -19,17 +19,16 @@ class Game
             delivery.get_batter
             delivery.batter_skill
             Delivery.num_wickets
-            puts "The bowler has bowled a #{delivery.bowl}"
+            delivery.bowl
             delivery.shot_selection
             delivery.wicket_calc
             delivery.is_wicket
             delivery.score_calc
-            puts "Thats #{delivery.runs} runs"
-            Scorecard.runs(delivery)
+            delivery.runs
+            delivery.commentate
             Scorecard.balls
-            # Scorecard.summary
             Scorecard.check_score
-            puts "#{Scorecard.wickets} wickets down in for #{@player_team_name}"
+            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)}"
             # run.check_wickets
         end
         puts "You have have lost!" 

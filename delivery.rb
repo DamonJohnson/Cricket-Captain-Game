@@ -2,37 +2,6 @@ require './cricketer.rb'
 require './menu.rb'
 
 
-# # Initialises the Australian Team
-# team_australia = [
-# david_yawner = Cricketer.new('David Yawner', 'Australia', 7),
-# aaron_pinch = Cricketer.new('Aaron Pinch', 'Australia', 7),
-# marnus_loosebuschange = Cricketer.new('Marnus Loosebuschange', 'Australia', 8),
-# steve_sith = Cricketer.new('Steve Sith', 'Australia', 9),
-# usman_carcharger = Cricketer.new('Usman Carcharger', 'Australia', 7),
-# travis_shed = Cricketer.new('Travis Shed', 'Australia', 6),
-# ali_scary = Cricketer.new('Ali Scary', 'Australia', 5),
-# pat_cumin = Cricketer.new('Pat Cumin', 'Australia', 3),
-# mitchell_starch = Cricketer.new('Mitchell Starch', 'Australia', 3),
-# josh_asyuwood = Cricketer.new('Josh Asyuwood', 'Australia', 2),
-# gary_legoat = Cricketer.new('Gary LeGoat', 'Australia', 1),
-# ]
-
-# # Initialises the England Team
-# team_england =
-# [
-#   jason_soy = Cricketer.new('Jason Soy', 'England', 6),
-#   jonny_barstool = Cricketer.new('Jonny Barstool', 'England', 7),
-#   joe_shmoot = Cricketer.new('Joe Shmoot', 'England', 9),
-#   eoin_organ = Cricketer.new('Eoin Organ', 'England', 7),
-#   ben_smokes = Cricketer.new('Ben Smokes', 'England', 8),
-#   jos_bottle = Cricketer.new('Jos Bottle', 'England', 7),
-#   chris_yokes = Cricketer.new('Chris Yokes', 'England', 4),
-#   liam_plankton = Cricketer.new('Liam Plankton', 'England', 3),
-#   stuart_broadsword = Cricketer.new('Stuart Broadsword', 'England', 3),
-#   jofra_carter = Cricketer.new('Jofra Carter', 'England', 9),
-#   jimmy_handstanderson = Cricketer.new('Jimmy Hanstanderson', 'England', 9)
-# ]
-
 
 # Delivery class is used to determine the outcome of ball that is bowled in the game
 class Delivery
@@ -105,18 +74,36 @@ class Delivery
     def runs
         case score_calc
         when 10..100
-            return 6
+            @runs = 6
         when 3..9
-            return 4
+            @runs = 4
         when -1..2
-            return 3
+            @runs = 3
         when -8..0
-            return 2
+            @runs = 2
         when -20..-9
-            return 1
+            @runs = 1
         else return 0
         end
     end
+
+    def commentate
+        case @runs
+            when 6
+                puts "The bowler has attempted to catch #{@batter.name} with a bouncer and #{@batter.name} has rocked back for a pull shot. Six Runs!"
+            when 4
+                puts "The bowler has angled the ball in at the stumps and #{@batter.name} has slashed it away for four runs!"
+            when 3
+                puts "The bowler pitches the ball wide of off stump and #{@batter.name} is able to beat the in field. They run hard and pick up three runs!"
+            when 2
+                puts "The bowler swings the bowl away from the #{@batter.name} but he is able to get enough bat on it. They pick up two runs."
+            when 1
+                puts "The bowler lands short of a length on leg stump."
+                puts "#{@batter.name} does well to get it away for single."
+            when 0
+                puts "A nice delivery by the bowler and #{@batter.name} can't get get the ball away. No run."
+            end         
+        end
 end
 
 

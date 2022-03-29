@@ -5,15 +5,15 @@ require './game'
 
 class Scorecard
     attr_accessor :runs, :balls
-
+    
     def initialize
+        @@runs = 0
+        @@ball = 0
         # @player_team = player_team
-         @@runs = 0
-        @@balls = 0
     end
 
     def self.runs(delivery)
-        puts @@runs += delivery.runs
+        @@runs += delivery.runs
     end
 
      # Checks the player's score and compares it to the target.
