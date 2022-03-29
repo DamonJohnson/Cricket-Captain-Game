@@ -31,18 +31,37 @@ class Game
             Scorecard.balls
             Scorecard.summary
             Scorecard.check_score
+            puts Scorecard.wickets
             # run.check_wickets
         end
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
     end
 
-    def check_wickets
+    def check_wickets 
+        if Scorecard.wickets = 10
+            puts "You have lost by #{Scorecard.runs_remaining} runs"
+            Game.end_game
+        end
     end
 
     def self.end_game
-        puts "Congratulations you have won by X wickets"
         puts "Would you like to play again?"
+        puts "1: Yes"
+        puts "2: No"
+        begin
+            input = gets.to_i
+            raise (TypeError 'Invalid input. Enter 1 to play again. Enter 2 to exit.') unless input == 1 or input == 2
+        rescue => e
+            puts e.message
+            retry
+        end
+
+        if input == 1
+            "Insert play again method call"
+        elsif input == 2
+            "Thanks for playing"
+        end
     end
     
 end

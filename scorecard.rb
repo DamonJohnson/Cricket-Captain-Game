@@ -20,6 +20,7 @@ class Scorecard
     def self.check_score
         # If players score reaches 100, the game ends
         if @@runs >= 30
+            puts "Congratulations you have won by X wickets"
             Game.end_game
         end
     end
@@ -28,8 +29,14 @@ class Scorecard
         100 - @@runs
     end
 
-    
-    
+    def self.wickets
+        Delivery.num_wickets
+    end
+
+    def self.wickets_remaining
+        10 - self.wickets
+    end
+
     def self.balls
         Delivery.ball_count
     end
