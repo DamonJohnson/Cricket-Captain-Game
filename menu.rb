@@ -92,16 +92,24 @@ class Menu
         if input == 1
             @player_team = team_australia
             @opposition_team = team_england
+            @player_team_name = 'Australia'
+            @opposition_team_name = 'England'
         elsif input == 2
             @player_team = team_england
             @opposition_team = team_australia
+            @player_team_name = 'England'
+            @opposition_team_name = 'Australia'
         end
         self.target
     end
 
+    def team_names
+
+    end
+
     def target
-        puts "You have chosen to play as #{self.player_team} against #{self.opposition_team}."
-        puts "#{self.opposition_team} has batted first. You need to score 100 runs in 10 overs to win. Goodluck!"
+        puts "You have chosen to play as #{@player_team_name} against #{@opposition_team_name}."
+        puts "#{@opposition_team_name} has batted first. You need to score 100 runs in 10 overs to win. Goodluck!"
         self.start_game
     end
 
