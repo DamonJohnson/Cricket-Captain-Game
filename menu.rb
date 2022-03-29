@@ -3,6 +3,39 @@ require './scoreboard'
 require './delivery'
 require './game'
 
+
+# Initialises the Australian Team
+team_australia = [
+david_yawner = Cricketer.new('David Yawner', 'Australia', 7),
+aaron_pinch = Cricketer.new('Aaron Pinch', 'Australia', 7),
+marnus_loosebuschange = Cricketer.new('Marnus Loosebuschange', 'Australia', 8),
+steve_sith = Cricketer.new('Steve Sith', 'Australia', 9),
+usman_carcharger = Cricketer.new('Usman Carcharger', 'Australia', 7),
+travis_shed = Cricketer.new('Travis Shed', 'Australia', 6),
+ali_scary = Cricketer.new('Ali Scary', 'Australia', 5),
+pat_cumin = Cricketer.new('Pat Cumin', 'Australia', 3),
+mitchell_starch = Cricketer.new('Mitchell Starch', 'Australia', 3),
+josh_asyuwood = Cricketer.new('Josh Asyuwood', 'Australia', 2),
+gary_legoat = Cricketer.new('Gary LeGoat', 'Australia', 1),
+]
+
+# Initialises the England Team
+team_england =
+[
+  jason_soy = Cricketer.new('Jason Soy', 'England', 6),
+  jonny_barstool = Cricketer.new('Jonny Barstool', 'England', 7),
+  joe_shmoot = Cricketer.new('Joe Shmoot', 'England', 9),
+  eoin_organ = Cricketer.new('Eoin Organ', 'England', 7),
+  ben_smokes = Cricketer.new('Ben Smokes', 'England', 8),
+  jos_bottle = Cricketer.new('Jos Bottle', 'England', 7),
+  chris_yokes = Cricketer.new('Chris Yokes', 'England', 4),
+  liam_plankton = Cricketer.new('Liam Plankton', 'England', 3),
+  stuart_broadsword = Cricketer.new('Stuart Broadsword', 'England', 3),
+  jofra_carter = Cricketer.new('Jofra Carter', 'England', 9),
+  jimmy_handstanderson = Cricketer.new('Jimmy Hanstanderson', 'England', 9)
+]
+
+
 def get_input
     begin
         input = gets.chomp.to_i
@@ -16,11 +49,13 @@ end
 # Menu class provides user controlled main methods and controls for the game
 # User can navigate menus with simple integer inputs
 class Menu
-    attr_accessor :player_team, :opposition_team
+    attr_accessor :player_team, :opposition_team, :team_australia, :team_england
 
-    def initialize
-        @player_team = player_team
-        @opposition_team = opposition_team
+    def initialize(team_australia, team_england)
+        player_team = []
+        opposition_team = []
+        @team_australia = team_australia
+        @team_england = team_england
     end
 
     # Run at the start of the game to allow the player to start a new game
@@ -55,11 +90,11 @@ class Menu
         retry
         end
         if input == 1
-            @player_team = 'Australia'
-            @opposition_team = 'England'
+            @player_team = team_australia
+            @opposition_team = team_england
         elsif input == 2
-            @player_team = 'England'
-            @opposition_team = 'Australia'
+            @player_team = team_england
+            @opposition_team = team_australia
         end
         self.target
     end
@@ -84,7 +119,7 @@ class Menu
             retry
         end
         if input == 1
-            game = Game.new(player_team, opposition_team)
+            game = Game.new(player_team)
             game.play
         elsif input == 2
             self.instructions

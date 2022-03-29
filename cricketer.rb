@@ -2,7 +2,7 @@
 # Each cricketer has been assigned a skill level that affects their ability to score runs as a batmsmen
 class Cricketer
 
-  attr_reader :name, :team, :skill
+  attr_accessor :name, :team, :skill
 
   def initialize(name, team, skill)
     @name = name
@@ -12,10 +12,8 @@ class Cricketer
 
 end
 
-
 # Initialises the Australian Team
-team_australia = 
-[
+team_australia = [
 david_yawner = Cricketer.new('David Yawner', 'Australia', 7),
 aaron_pinch = Cricketer.new('Aaron Pinch', 'Australia', 7),
 marnus_loosebuschange = Cricketer.new('Marnus Loosebuschange', 'Australia', 8),
@@ -44,6 +42,10 @@ team_england =
   jofra_carter = Cricketer.new('Jofra Carter', 'England', 9),
   jimmy_handstanderson = Cricketer.new('Jimmy Hanstanderson', 'England', 9)
 ]
+
+
+
+damon = Cricketer.new('Damon Johnson', 'Australia', 7)
 
 
 # team_australia.each do |team_member|
