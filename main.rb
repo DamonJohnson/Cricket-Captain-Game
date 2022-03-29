@@ -2,7 +2,7 @@ require './menu'
 require './cricketer'
 require './delivery'
 require './game'
-require './scoreboard'
+require './scorecard'
 
 # Initialises the Australian Team
 team_australia = [

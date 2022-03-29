@@ -1,5 +1,4 @@
 require './cricketer'
-require './scoreboard'
 require './delivery'
 require './game'
 
@@ -120,6 +119,7 @@ class Menu
         end
         if input == 1
             game = Game.new(player_team)
+            scorecard = Scorecard.new
             game.play
         elsif input == 2
             self.instructions

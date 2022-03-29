@@ -36,9 +36,9 @@ require './menu.rb'
 
 # Delivery class is used to determine the outcome of ball that is bowled in the game
 class Delivery
-    attr_accessor :ball_count, :wickets
+    attr_accessor :ball_count, :num_wickets
     @@ball_count = 0
-    @@wickets = 0
+    @@num_wickets = 0
 
     # Everytime the ball is bowled in the game, a new instance of the delivery class is created
     def initialize(team)
@@ -51,13 +51,17 @@ class Delivery
         return @@ball_count
     end
 
+    def self.num_wickets
+        return @@num_wickets
+    end
+
     # Returns a random number between 1 and 40 simulating the quality of the bowler's delivery
     def bowl
         @ball_quality = 1+rand(40)
     end
 
     def get_batter
-        @batter = @@team[0]
+        @batter = @@team[@@num_wickets]
     end
 
     def batter_skill
@@ -85,14 +89,10 @@ class Delivery
         @ball_quality + @shot_input - batter_skill
     end
     
-    # Returns truthy if the batsman is dismissed
-    def wicket?
-        wicket_calc > 29 ? 'true' : 'false'
-    end
 
-    def dismissal
-        if wicket?
-            @@wickets += 1
+    def is_wicket
+        if wicket_calc > 29
+            @@num_wickets += 1
         end
     end
 
