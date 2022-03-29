@@ -7,7 +7,7 @@ require './scorecard'
 class Game
     def initialize(player_team)
         @player_team = player_team
-        
+        scorecard = Scorecard.new
     end
 
     # Need to change batter
@@ -27,18 +27,23 @@ class Game
             delivery.is_wicket
             puts "The runs calc is #{delivery.score_calc}"
             puts "Thats #{delivery.runs} runs"
-            scorecard.git runs
-            # run.check_score
+            Scorecard.runs(delivery)
+            Scorecard.balls
+            Scorecard.summary
+            Scorecard.check_score
             # run.check_wickets
         end
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
     end
     
-    def check_score
-    end
+   
 
     def check_wickets
+    end
+
+    def self.end_game
+        puts "Would you like to play again?"
     end
     
 end

@@ -1,34 +1,45 @@
 require './cricketer'
 require './delivery'
+require './game'
 
 
 class Scorecard
-    attr_accessor :runs, :balls,
+    attr_accessor :runs, :balls
 
     def initialize
         # @player_team = player_team
-        @total_runs = 0
-        @total_balls = 0
+         @@runs = 0
+        @@balls = 0
     end
 
-    def runs
-        puts @total_runs += delivery.runs
+    def self.runs(delivery)
+        puts @@runs += delivery.runs
+    end
+
+     # Checks the player's score and compares it to the target.
+    def self.check_score
+        # If players score reaches 100, the game ends
+        if @@runs >= 30
+            puts "Congratulations you have won by X wickets"
+        end
     end
     
-    def runs_remaining
-        100 - @total_runs
+    def self.runs_remaining
+        100 - @@runs
     end
+
     
-    def balls
+    
+    def self.balls
         Delivery.ball_count
     end
 
-    def balls_remaining
+    def self.balls_remaining
         60 - Delivery.ball_count
     end
 
-    def summary
-        puts "Australia has scored #{runs} runs from #{balls}"
+    def self.summary
+        puts "Australia has scored #{@@runs} runs"
     end
 end
 
