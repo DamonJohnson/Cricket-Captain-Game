@@ -123,10 +123,9 @@ class Menu
         if input == 'scores'
             puts 'scores'
         elsif input == 1
-            start_game
+            team_selection
         end
 
     end
 end
-
 

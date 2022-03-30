@@ -108,6 +108,5 @@ class Delivery
             else
                 puts "A nice delivery by the bowler and #{@batter.name} can't get get the ball away. No run."
             end         
-        end
+    end
 end
-
