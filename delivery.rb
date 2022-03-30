@@ -19,7 +19,8 @@ class Delivery
     def self.ball_count
         return @@ball_count
     end
-
+    
+    # Returns the number of wickets that have been fallen in the game
     def self.num_wickets
         return @@num_wickets
     end
@@ -29,18 +30,19 @@ class Delivery
         @ball_quality = 1+rand(40)
     end
 
+    # Returns the batter who will be involved in this instance of the delivery
     def get_batter
         @batter = @@team[@@num_wickets]
     end
 
+    # Returns the batter's skill level
     def batter_skill
         @batter_skill = @batter.skill
     end
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
-        puts "Enter your shot type!"
-        puts ""
+        puts "Select your shot!" 
         begin
             @shot_input = gets.chomp.to_i
             raise (TypeError 'Invalid input. Enter 1-4 to select shot or 5 for instructions.') unless @shot_input.between?(1,5)
@@ -55,22 +57,23 @@ class Delivery
         return @shot_input
     end
 
+    # Calculates the value that determines if a wicket has occured
     def wicket_calc
         @ball_quality + @shot_input - batter_skill
     end
     
-
+    #  If a wicket occurs, adds one to the total of wickets
     def is_wicket
         if wicket_calc > 29
             @@num_wickets += 1
         end
     end
 
+    # Calculates the value that determines how many runs have been scored on this delivery
     def score_calc
-        (batter_skill) + (@shot_input) - @ball_quality
+        batter_skill + @shot_input - @ball_quality
     end
     
-
     # Returns the number of runs scored by the batsman
     def runs
         case score_calc
@@ -88,6 +91,7 @@ class Delivery
         end
     end
 
+    # Provides commentary based on the number of runs scored by the player
     def commentate
         case @runs
             when 6
@@ -99,12 +103,11 @@ class Delivery
             when 2
                 puts "The bowler swings the bowl away from the #{@batter.name} but he is able to get enough bat on it. They pick up two runs."
             when 1
-                puts "The bowler lands the ball just short of a length on off stump."
+                puts "The bowler lands short of a length on leg stump."
                 puts "#{@batter.name} does well to get it away for single."
             else
                 puts "A nice delivery by the bowler and #{@batter.name} can't get get the ball away. No run."
             end         
         end
 end
-
 

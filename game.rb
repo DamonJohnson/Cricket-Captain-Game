@@ -11,7 +11,6 @@ class Game
         scorecard = Scorecard.new
     end
 
-    # Need to change batter
 
     def play
         while Delivery.ball_count < 60
@@ -28,8 +27,7 @@ class Game
             delivery.commentate
             Scorecard.balls
             Scorecard.check_score
-            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)}"
-            # run.check_wickets
+            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)} runs"
         end
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
@@ -55,10 +53,9 @@ class Game
         end
 
         if input == 1
-            run = Menu.new(team_australia, team_england)
-            run.landing_menu
+            "Insert play again method"
         elsif input == 2
-            exit
+            "Thanks for playing"
         end
     end
     

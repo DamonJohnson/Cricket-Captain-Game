@@ -2,7 +2,7 @@ require './cricketer'
 require './delivery'
 require './game'
 
-
+# Stores key statistics for current game
 class Scorecard
     attr_accessor :runs, :balls
     
@@ -12,6 +12,7 @@ class Scorecard
         # @player_team = player_team
     end
 
+    # Returns the total runs for the game
     def self.runs(delivery)
         @@runs += delivery.runs
     end
@@ -25,26 +26,32 @@ class Scorecard
         end
     end
     
+    # Calculates remaining runs to win the game
     def self.runs_remaining
         100 - @@runs
     end
 
+    # Returns total wickets that have fallen
     def self.wickets
         Delivery.num_wickets
     end
 
+    # Returns the remaining wickets for the batting side
     def self.wickets_remaining
         10 - self.wickets
     end
 
+    # Returns total balls bowled
     def self.balls
         Delivery.ball_count
     end
 
+    # Returns balls remaining in the innings
     def self.balls_remaining
         60 - Delivery.ball_count
     end
 
+    # Outputs a summary of the game's scores
     def self.summary
         puts "Australia has scored #{@@runs} runs"
     end
