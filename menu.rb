@@ -19,42 +19,25 @@ class Menu
 
     # Run at the start of the game to allow the player to start a new game
     def landing_menu
-        puts "Welcome to the Ruby Cricket Challenge!"
-        puts "1: Start a new game"
-        puts "2: View instructions"
-        begin
-            input = gets.chomp.to_i
-            raise(TypeError, 'Invalid input. Enter 1 to start new game. Enter 2 to view instructions.') unless input == 1 || input == 2
-        rescue => e
-            puts e.message
-        retry
-        end
-        if input == 1
+        prompt = TTY::Prompt.new
+        input = prompt.select("Welcome to the Cricket Challenge Game", %w(Begin Instructions))
+        if input == "Begin"
             self.team_selection
-        elsif input == 2
+        elsif input == "Instructions"
             self.instructions
         end
-        
     end
 
     # Allows player to select their team
     def team_selection
-        puts "Please select your team"
-        puts "1: Australia"
-        puts "2: England"
-        begin
-            input = gets.chomp.to_i
-            raise(TypeError, 'Invalid input. Enter 1 to select Australia. Enter 2 to select England.') unless input == 1 || input == 2
-        rescue => e
-            puts e.message
-        retry
-        end
-        if input == 1
+        prompt = TTY::Prompt.new
+        input = prompt.select("Select your team", %w(Australia England))
+        if input == "Australia"
             @player_team = team_australia
             @opposition_team = team_england
             @player_team_name = 'Australia'
             @opposition_team_name = 'England'
-        elsif input == 2
+        elsif input == "England"
             @player_team = team_england
             @opposition_team = team_australia
             @player_team_name = 'England'
@@ -71,23 +54,14 @@ class Menu
 
     # Checks if user is ready to start the game after selecting their team or if they'd like to view instructions
     def start_game
-        puts "Are you ready?"
-        puts "1: Start"
-        puts "2: View Instructions"
-        puts "3: Change Team"
-        begin
-            input = gets.chomp.to_i
-        raise(TypeError, 'Invalid Input. Enter 1 to start the game. Enter 2 to view instructions.') unless input == 1 or input == 2 or input == 3
-        rescue => e 
-            puts e.message
-            retry
-        end
-        if input == 1
+        prompt = TTY::Prompt.new
+        input = prompt.select("Are you ready?", %w(Start Instructions Change-Team))
+        if input == "Start"
             game = Game.new(player_team, @player_team_name)
             game.play
-        elsif input == 2
+        elsif input == "Instructions"
             self.instructions
-        elsif input == 3
+        elsif input == "Change-Team"
             self.team_selection
         end
     end
@@ -118,7 +92,6 @@ class Menu
         elsif input == 1
             team_selection
         end
-
     end
 end
 
