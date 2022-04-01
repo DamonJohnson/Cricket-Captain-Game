@@ -1,6 +1,7 @@
 require './cricketer.rb'
 require './menu.rb'
 require "tty-prompt"
+require 'rainbow'
 
 
 
@@ -95,17 +96,17 @@ class Delivery
     # Provides commentary based on the number of runs scored by the player
     def commentate
         if wicket_calc > 29
-            puts "Thats out! #{@batter.name} had no idea about that one and will be on his way back to the dressing room."
+            puts Rainbow("Thats out! #{@batter.name} had no idea about that one and will be on his way back to the dressing room.").red
         end
         case @runs
             when 6
-                puts "The bowler has attempted to catch #{@batter.name} with a bouncer and #{@batter.name} has rocked back for a pull shot. Six Runs!"
+                puts "The bowler has attempted to catch #{@batter.name} with a bouncer and #{@batter.name} has rocked back for a pull shot. " + Rainbow("Six runs!").green
             when 4
-                puts "The bowler has angled the ball in at the stumps and #{@batter.name} has slashed it away for four runs!"
+                puts "The bowler has angled the ball in at the stumps and #{@batter.name} has slashed it away for " + Rainbow("Four runs!").green
             when 3
-                puts "The bowler pitches the ball wide of off stump and #{@batter.name} is able to beat the in field. They run hard and pick up three runs!"
+                puts "The bowler pitches the ball wide of off stump and #{@batter.name} is able to beat the in field. They run hard and pick up "+ Rainbow("three runs!").green
             when 2
-                puts "The bowler swings the bowl away from the #{@batter.name} but he is able to get enough bat on it. They pick up two runs."
+                puts "The bowler swings the bowl away from the #{@batter.name} but he is able to get enough bat on it. They pick up " + Rainbow("two runs!").green
             when 1
                 puts "The bowler lands short of a length on leg stump."
                 puts "#{@batter.name} does well to get it away for single."

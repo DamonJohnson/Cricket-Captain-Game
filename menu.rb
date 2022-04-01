@@ -76,21 +76,15 @@ class Menu
         puts "3: Attacking shot."
         puts "4: Very attacking shot."
         puts "If you play attacking shots you will score faster but there is a higher chance you will be dismissed."
-        puts "Some batsmen are better than others. To see the batting score of each player enter 'scores' in to the terminal."
-        puts "To start the game, enter 1."
+        puts "Some batsmen are better than others. To see the batting score of each player select View-Scores"
 
-        begin
-            input = gets.to_i
-            raise (TypeError 'Invalid input. Enter 1 to view the batting score of all players. Enter 2 to play the game.') unless input == 1 or input == 'scores'
-        rescue => e
-            puts e.message
-            retry
-        end
-
-        if input == 'scores'
-            puts 'scores'
-        elsif input == 1
-            team_selection
+        prompt = TTY::Prompt.new
+        input = prompt.select("Are you ready?", %w(Start View-Scores))
+        if input == "Start"
+            self.team_selection
+        elsif input == "View-Scores"
+            puts "Steve Smith is the best"
+            self.team_selection
         end
     end
 end
