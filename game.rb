@@ -8,12 +8,13 @@ class Game
     def initialize(player_team, player_team_name)
         @player_team = player_team
         @player_team_name = player_team_name
-        scorecard = Scorecard.new
+      
     end
 
 
     def play
         while Delivery.ball_count < 60
+            scorecard = Scorecard.new
             delivery = Delivery.new(@player_team)
             delivery.get_batter
             delivery.batter_skill
@@ -25,17 +26,17 @@ class Game
             delivery.score_calc
             delivery.runs
             delivery.commentate
-            Scorecard.balls
-            Scorecard.check_score
-            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)} runs"
+            scorecard.balls
+            scorecard.check_score
+            puts "The score is #{scorecard.wickets} wickets for #{scorecard.runs(delivery)} runs"
         end
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
     end
 
     def check_wickets 
-        if Scorecard.wickets = 10
-            puts "You have lost by #{Scorecard.runs_remaining} runs"
+        if scorecard.wickets = 10
+            puts "You have lost by #{scorecard.runs_remaining} runs"
             Game.end_game
         end
     end

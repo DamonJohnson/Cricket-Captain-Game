@@ -13,12 +13,12 @@ class Scorecard
     end
 
     # Returns the total runs for the game
-    def self.runs(delivery)
+    def runs(delivery)
         @@runs += delivery.runs
     end
 
      # Checks the player's score and compares it to the target.
-    def self.check_score
+    def check_score
         # If players score reaches 100, the game ends
         if @@runs >= 100
             puts "Congratulations you have won by X wickets"
@@ -27,33 +27,37 @@ class Scorecard
     end
     
     # Calculates remaining runs to win the game
-    def self.runs_remaining
+    def runs_remaining
         100 - @@runs
     end
 
     # Returns total wickets that have fallen
-    def self.wickets
+    def wickets
         Delivery.num_wickets
     end
 
     # Returns the remaining wickets for the batting side
-    def self.wickets_remaining
-        10 - self.wickets
+    def wickets_remaining
+        10 - wickets
     end
 
     # Returns total balls bowled
-    def self.balls
+    def balls
         Delivery.ball_count
     end
 
     # Returns balls remaining in the innings
-    def self.balls_remaining
+    def balls_remaining
         60 - Delivery.ball_count
     end
 
     # Outputs a summary of the game's scores
-    def self.summary
+    def summary
         puts "Australia has scored #{@@runs} runs"
+    end
+
+    #Outputs the required runrate
+    def runrate
     end
 end
 

@@ -43,10 +43,3 @@ team_england =
   jimmy_handstanderson = Cricketer.new('Jimmy Hanstanderson', 'England', 9)
 ]
 
-damon = Cricketer.new('Damon Johnson', 'Australia', 7)
-
-
-
-# team_australia.each do |team_member|
-#   puts team_member.name
-# end
