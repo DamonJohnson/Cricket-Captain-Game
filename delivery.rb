@@ -1,5 +1,6 @@
 require './cricketer.rb'
 require './menu.rb'
+require "tty-prompt"
 
 
 
@@ -42,19 +43,19 @@ class Delivery
 
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
-        puts "Select your shot!" 
-        begin
-            @shot_input = gets.chomp.to_i
-            raise (TypeError 'Invalid input. Enter 1-4 to select shot or 5 for instructions.') unless @shot_input.between?(1,5)
-        rescue => e
-            puts e.message
-            retry
-        
+        prompt = TTY::Prompt.new
+        input = prompt.select("Select your shot", %w(Defensive Balanced Attacking Very-Attacking))
+        if input == "Defensive"
+            @shot_input = 1
+        elsif input == "Balanced"
+            @shot_input = 2
+        elsif input == "Attacking"
+            @shot_input = 3
+        elsif input == "Very-Attacking"
+            @shot_input = 4
+        else
+            puts "please select an a shot selection option"
         end
-            if @shot_input == 5
-                this_game.instructions
-            end
-        return @shot_input
     end
 
     # Calculates the value that determines if a wicket has occured
@@ -93,6 +94,9 @@ class Delivery
 
     # Provides commentary based on the number of runs scored by the player
     def commentate
+        if wicket_calc > 29
+            puts "Thats out! #{@batter.name} had no idea about that one and will be on his way back to the dressing room."
+        end
         case @runs
             when 6
                 puts "The bowler has attempted to catch #{@batter.name} with a bouncer and #{@batter.name} has rocked back for a pull shot. Six Runs!"
@@ -106,7 +110,7 @@ class Delivery
                 puts "The bowler lands short of a length on leg stump."
                 puts "#{@batter.name} does well to get it away for single."
             else
-                puts "A nice delivery by the bowler and #{@batter.name} can't get get the ball away. No run."
+                puts "A nice delivery by the bowler fooled the batsman there."
             end         
     end
 end

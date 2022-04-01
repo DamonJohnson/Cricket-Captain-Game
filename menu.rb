@@ -2,16 +2,8 @@ require './cricketer'
 require './delivery'
 require './game'
 require './scorecard'
+require "tty-prompt"
 
-def get_input
-    begin
-        input = gets.chomp.to_i
-        raise(TypeError, 'Invalid input. Enter 1 to start new game. Enter 2 to view instructions.') unless input == 1 || input == 2
-    rescue => e
-        puts e.message
-    retry
-    end
-end
 
 # Menu class provides user controlled main methods and controls for the game
 # User can navigate menus with simple integer inputs
@@ -42,6 +34,7 @@ class Menu
         elsif input == 2
             self.instructions
         end
+        
     end
 
     # Allows player to select their team
