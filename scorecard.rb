@@ -77,7 +77,7 @@ class Scorecard
         table = TTY::Table.new(["Runs","Balls","Strike Rate", "Run Rate", "Req. Runs", "Req. Runrate"], [[Scorecard.get_total_runs, Scorecard.balls, Scorecard.strikerate, Scorecard.runrate, Scorecard.runs_remaining, Scorecard.req_runrate],])
         puts ""
         puts "                        SCORECARD                       "      
-        puts table.render(:ascii)
+        puts table.render(:unicode)
         puts ""
     end
 

@@ -87,8 +87,31 @@ class Menu
         if input == "Start"
             self.team_selection
         elsif input == "View-Scores"
-                table = TTY::Table.new(["Batsman", "Team", "Batting Score"], [team_australia[0][0]])
-                puts table.render(:ascii)
+            require 'tty-table' 
+            aus_scores = TTY::Table.new
+            puts "AUSTRALIAN BATTING ORDER"
+            aus_scores << ["Batsman", "Batting Score"]
+
+            i = 0
+            while i < team_australia.length
+            aus_scores << [team_australia[i].name, team_australia[i].skill]
+            i += 1
+            end
+            puts aus_scores.render(:unicode)
+            puts ""
+
+
+            eng_scores = TTY::Table.new
+            puts "ENGLAND BATTING ORDER"
+            eng_scores << ["Batsman", "Batting Score"]
+
+            i = 0
+            while i < team_england.length
+            eng_scores << [team_england[i].name, team_england[i].skill]
+            i += 1
+            end
+            puts eng_scores.render(:unicode)
+
             self.team_selection
         end
     end
