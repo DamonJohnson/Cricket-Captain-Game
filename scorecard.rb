@@ -55,5 +55,9 @@ class Scorecard
         60 - Delivery.ball_count
     end
 
+    # Table output for scorecard summary
+    def self.summary
+        puts "test: #{Scorecard.wickets} wickets for #{Scorecard.get_total_runs} runs."
+    end
 
 end

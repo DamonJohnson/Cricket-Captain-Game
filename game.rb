@@ -33,6 +33,7 @@ class Game
         end
         puts "You have have lost!" 
         puts "You'll need to score faster next time"
+        # Insert option for replay here
     end
 
 
@@ -41,11 +42,6 @@ class Game
             puts "You have lost by #{Scorecard.runs_remaining} runs"
             Game.end_game
         end
-    end
-
-    def self.scoreboard
-        puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)} runs."
-        puts "Runs required is #{Scorecard.runs_remaining} runs off #{Scorecard.balls_remaining} balls."
     end
 
     def self.end_game

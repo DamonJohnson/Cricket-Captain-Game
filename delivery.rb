@@ -45,7 +45,7 @@ class Delivery
     # User selects a shot which determines risk of wicket and scoring potential
     def shot_selection
         prompt = TTY::Prompt.new
-        input = prompt.select("Select your shot", %w(Defensive Balanced Attacking Very-Attacking Scoreboard))
+        input = prompt.select("Select your shot", %w(Defensive Balanced Attacking Very-Attacking Scorecard))
         if input == "Defensive"
             @shot_input = 1
         elsif input == "Balanced"
@@ -54,11 +54,11 @@ class Delivery
             @shot_input = 3
         elsif input == "Very-Attacking"
             @shot_input = 4
-        elsif input == "Scoreboard"
-            Game.scoreboard
+        elsif input == "Scorecard"
+            Scorecard.summary
             shot_selection
         else
-            puts "please select an a shot selection option"
+            puts "please select a shot selection option"
         end
     end
 
