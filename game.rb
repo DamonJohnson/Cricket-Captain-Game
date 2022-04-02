@@ -27,7 +27,8 @@ class Game
             delivery.commentate
             Scorecard.balls
             Scorecard.check_score
-            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)} runs."
+            Scorecard.sum_runs(delivery)
+            puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.get_total_runs} runs."
             puts "Runs required is #{Scorecard.runs_remaining} runs off #{Scorecard.balls_remaining} balls."
         end
         puts "You have have lost!" 
@@ -40,6 +41,11 @@ class Game
             puts "You have lost by #{Scorecard.runs_remaining} runs"
             Game.end_game
         end
+    end
+
+    def self.scoreboard
+        puts "The score is #{Scorecard.wickets} wickets for #{Scorecard.runs(delivery)} runs."
+        puts "Runs required is #{Scorecard.runs_remaining} runs off #{Scorecard.balls_remaining} balls."
     end
 
     def self.end_game

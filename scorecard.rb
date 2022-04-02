@@ -4,23 +4,27 @@ require './game'
 
 # Stores key statistics for current game
 class Scorecard
-    attr_accessor :runs, :balls
+    attr_accessor :total_runs, :balls
     
     def initialize
-        @@runs = 0
+        @@total_runs = 0
         @@ball = 0
         # @player_team = player_team
     end
 
     # Returns the total runs for the game
-    def self.runs(delivery)
-        @@runs += delivery.runs
+    def self.sum_runs(delivery)
+        @@total_runs += delivery.runs
+    end
+
+    def self.get_total_runs
+        @@total_runs
     end
 
      # Checks the player's score and compares it to the target.
     def self.check_score
         # If players score reaches 100, the game ends
-        if @@runs >= 100
+        if @@total_runs >= 100
             puts "Congratulations you have won by X wickets"
             Game.end_game
         end
@@ -28,7 +32,7 @@ class Scorecard
     
     # Calculates remaining runs to win the game
     def self.runs_remaining
-        100 - @@runs
+        100 - @@total_runs
     end
 
     # Returns total wickets that have fallen
