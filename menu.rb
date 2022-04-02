@@ -68,6 +68,8 @@ class Menu
 
     # Displays the instructions on how to control the batsman during the game
     def instructions
+        puts ""
+        puts ""
         puts "--------------------INSTRUCTIONS--------------------"
         puts "You need to score 100 runs in 10 overs (60 balls)."
         puts "Before each ball, you will need to select a shot."
@@ -77,7 +79,8 @@ class Menu
         puts "4: Very attacking shot."
         puts "If you play attacking shots you will score faster but there is a higher chance you will be dismissed."
         puts "Some batsmen are better than others. To see the batting score of each player select View-Scores"
-
+        puts ""
+        puts ""
         prompt = TTY::Prompt.new
         input = prompt.select("Are you ready?", %w(Start View-Scores))
         if input == "Start"

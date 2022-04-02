@@ -1,6 +1,7 @@
 require './cricketer'
 require './delivery'
 require './game'
+require 'tty-table'  
 
 # Stores key statistics for current game
 class Scorecard
@@ -55,9 +56,29 @@ class Scorecard
         60 - Delivery.ball_count
     end
 
+    # Retuns the strikerate (runs per 100 balls)
+    def self.strikerate
+        100 * self.get_total_runs/self.balls
+    end
+
+    # Returns the runrate (runs per over (6 balls))
+    def self.runrate
+        (self.get_total_runs / (self.balls/6.00))
+    end
+
+    # Retuns the required runrate to win the game
+    def self.req_runrate
+        (self.runs_remaining / (self.balls_remaining/6.00))
+    end
+
+
     # Table output for scorecard summary
     def self.summary
-        puts "test: #{Scorecard.wickets} wickets for #{Scorecard.get_total_runs} runs."
+        table = TTY::Table.new(["Runs","Balls","Strike Rate", "Run Rate", "Req. Runs", "Req. Runrate"], [[Scorecard.get_total_runs, Scorecard.balls, Scorecard.strikerate, Scorecard.runrate, Scorecard.runs_remaining, Scorecard.req_runrate],])
+        puts ""
+        puts "                        SCORECARD                       "      
+        puts table.render(:ascii)
+        puts ""
     end
 
 end

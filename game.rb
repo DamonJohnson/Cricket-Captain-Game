@@ -32,8 +32,8 @@ class Game
             puts "Runs required is #{Scorecard.runs_remaining} runs off #{Scorecard.balls_remaining} balls."
         end
         puts "You have have lost!" 
-        puts "You'll need to score faster next time"
-        # Insert option for replay here
+        puts "You'll need to score faster next time."
+        Game.end_game
     end
 
 
@@ -45,22 +45,7 @@ class Game
     end
 
     def self.end_game
-        puts "Would you like to play again?"
-        puts "1: Yes"
-        puts "2: No"
-        begin
-            input = gets.to_i
-            raise (TypeError 'Invalid input. Enter 1 to play again. Enter 2 to exit.') unless input == 1 or input == 2
-        rescue => e
-            puts e.message
-            retry
-        end
-
-        if input == 1
-            "Insert play again method"
-        elsif input == 2
-            "Thanks for playing"
-        end
+        "Thanks for playing the cricket challenge"
+        "To play gain, enter 'ruby main.rb'"
     end
-    
 end
