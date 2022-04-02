@@ -42,4 +42,3 @@ team_england =
   jofra_carter = Cricketer.new('Jofra Carter', 'England', 9),
   jimmy_handstanderson = Cricketer.new('Jimmy Hanstanderson', 'England', 9)
 ]
-

@@ -10,4 +10,4 @@ gem "tty-prompt", "~> 0.23.1"
 
 gem "rainbow", "~> 3.1"
 
-gem "tty-table"
+gem "tty-table", "~> 0.12.0"

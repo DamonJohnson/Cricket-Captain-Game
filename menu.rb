@@ -3,6 +3,7 @@ require './delivery'
 require './game'
 require './scorecard'
 require "tty-prompt"
+require 'tty-table' 
 
 
 # Menu class provides user controlled main methods and controls for the game
@@ -86,7 +87,8 @@ class Menu
         if input == "Start"
             self.team_selection
         elsif input == "View-Scores"
-            puts "Steve Smith is the best"
+                table = TTY::Table.new(["Batsman", "Team", "Batting Score"], [team_australia[0][0]])
+                puts table.render(:ascii)
             self.team_selection
         end
     end

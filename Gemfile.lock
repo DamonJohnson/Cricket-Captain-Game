@@ -48,7 +48,7 @@ DEPENDENCIES
   rainbow (~> 3.1)
   rspec (~> 3.11)
   tty-prompt (~> 0.23.1)
-  tty-table
+  tty-table (~> 0.12.0)
 
 BUNDLED WITH
    2.3.9
