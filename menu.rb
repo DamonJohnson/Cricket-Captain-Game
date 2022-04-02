@@ -9,13 +9,17 @@ require 'tty-table'
 # Menu class provides user controlled main methods and controls for the game
 # User can navigate menus with simple integer inputs
 class Menu
-    attr_accessor :player_team, :opposition_team, :team_australia, :team_england
-
-    def initialize(team_australia, team_england)
+    attr_accessor :player_team, :opposition_team, :team_australia, :team_england, :overs, :target
+    
+    def initialize(team_australia, team_england, overs, difficulty)
         player_team = []
         opposition_team = []
         @team_australia = team_australia
         @team_england = team_england
+        @overs = overs
+        @difficulty = difficulty
+        
+
     end
 
     # Run at the start of the game to allow the player to start a new game
@@ -44,12 +48,23 @@ class Menu
             @player_team_name = 'England'
             @opposition_team_name = 'Australia'
         end
-        self.target
+    end 
+
+    def get_target(overs, difficulty)
+        if difficulty == 'easy'
+            return 4 * overs.to_i
+        elsif difficulty == 'medium'
+            return 6 * overs.to_i
+        elsif difficulty == 'hard'
+            return 8 * overs.to_i
+        else
+            return 100
+        end
     end
 
-    def target
+    def output_target
         puts "You have chosen to play as #{@player_team_name} against #{@opposition_team_name}."
-        puts "#{@opposition_team_name} has batted first. You need to score 100 runs in 10 overs to win. Goodluck!"
+        puts "#{@opposition_team_name} has batted first. You need to score #{get_target(@overs, @difficulty)} runs in #{@overs} overs to win. Goodluck!"
         self.start_game
     end
 

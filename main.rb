@@ -38,13 +38,19 @@ team_england =
 
 # Game is played by executing the main.rb file.
 # Game starts by initializing menu class and running the landing_menu method
-user = "user"
-user = ARGV[0] if ARGV[0]
+# Command line arguments determine user name, number of overs and game difficulty
 
-puts "Hi #{user}, welcome to the Ruby cricket challenge"
 
-run = Menu.new(team_australia, team_england)
+overs = "10"
+overs = ARGV[0] if ARGV[0]
+
+
+difficulty = 2
+difficulty = ARGV[1] if ARGV[1]
+
+puts "Hello and welcome to the Ruby cricket chase!"
+
+run = Menu.new(team_australia, team_england, overs, difficulty)
 run.landing_menu
-
-
-
+run.output_target
+ 
