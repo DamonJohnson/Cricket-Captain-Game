@@ -105,6 +105,11 @@ The program was developed in a modular way by implementing the following feature
 - Determine if a wicket occured from the delivery with consideration for batter skill, shot selection and ball quality
 - Provide commentary for each delivery
 - Pass ball by ball data to the scoreboard
+- Calibrate runs and wicket calculation methods to emulate real world cricket
+
+The following screenshots show visual representations of the wicket and runs probaility calibration.
+![Runs Proability Calibration](./planning/runscalibration.png))
+![Wicket Probability Calibration](./planning/wicketcalibration.png))
 
 *Scorecard*
 - Track player runs, runrate, wickets, balls
