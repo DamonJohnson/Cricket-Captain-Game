@@ -88,7 +88,7 @@ class Menu
     puts ''
     puts ''
     puts '--------------------INSTRUCTIONS--------------------'
-    puts 'You need to score 100 runs in 10 overs (60 balls).'
+    puts "You need to score #{get_target(@overs, @difficulty)} runs in #{overs} overs."
     puts 'Before each ball, you will need to select a shot.'
     puts '1: Defensive shot.'
     puts '2: Balanced shot.'

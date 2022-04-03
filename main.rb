@@ -44,7 +44,7 @@ overs = ARGV[0] if ARGV[0]
 difficulty = 2
 difficulty = ARGV[1] if ARGV[1]
 
-puts 'Hello and welcome to the Ruby cricket chase!'
+puts 'Hello and welcome to the Ruby Cricket Captain game!'
 
 run = Menu.new(team_australia, team_england, overs, difficulty)
 run.landing_menu
