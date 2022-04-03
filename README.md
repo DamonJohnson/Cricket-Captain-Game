@@ -83,9 +83,9 @@ Github Repository: https://github.com/DamonJohnson/Cricket-Captain-Game
 ## 7. Implementation Plan
 ### 7.1 Concept Flowcharts
 
-![Project Flowchart](./planning/flowchart.png)
+![Project Flowchart](./docs/flowchart.png)
 
-![Project Data Flowchart](./planning/dataflow.png))
+![Project Data Flowchart](./docs/dataflow.png))
 
 ### 7.2 Feature Checklists
 The program was developed in a modular way by implementing the following features. Each feature contained its own checklist of tasks that were then completed.
@@ -100,7 +100,8 @@ The program was developed in a modular way by implementing the following feature
 
 *Delivery Simulation*
 - Prompt user for shot selection for each delivery
-- Generate 'ball quality' by random number generation
+- Generate random 'ball quality' by random number generation
+- Get batter's skill from current batsman of player's team
 - Determine runs scored from the delivery with consideration for batter skill, shot selection and ball quality
 - Determine if a wicket occured from the delivery with consideration for batter skill, shot selection and ball quality
 - Provide commentary for each delivery
@@ -108,8 +109,8 @@ The program was developed in a modular way by implementing the following feature
 - Calibrate runs and wicket calculation methods to emulate real world cricket
 
 The following screenshots show visual representations of the wicket and runs probaility calibration.
-![Runs Proability Calibration](./planning/runscalibration.png))
-![Wicket Probability Calibration](./planning/wicketcalibration.png))
+![Runs Proability Calibration](./docs/runscalibration.png))
+![Wicket Probability Calibration](./docs/wicketcalibration.png))
 
 *Scorecard*
 - Track player runs, runrate, wickets, balls
@@ -121,10 +122,12 @@ The following screenshots show visual representations of the wicket and runs pro
 
 ### 7.3 Project Management
 Project Management for the above features, project user stories and general development was carried out in a Trello kanban workspace.
+
 The following screenshot shows the state of the workspace during development of the application.
+![Trello Workspace](./docs/trello.png)
 
-![Trello Workspace](./planning/trello.png)
-
+The following screenshot shows an example of how each feature checklist was managed in trello.
+![Trello Feature Checklist](./docs/checklistexample.png)
 
 ## 8. Code Style Guide
 https://rubystyle.guide/ implemented by Ruby Rubocop v0.8.6.
