@@ -73,7 +73,7 @@ class Menu
         prompt = TTY::Prompt.new
         input = prompt.select("Are you ready?", %w(Start Instructions Change-Team))
         if input == "Start"
-            game = Game.new(player_team, @player_team_name)
+            game = Game.new(player_team, @player_team_name, @overs, get_target(@overs, @difficulty))
             game.play
         elsif input == "Instructions"
             self.instructions

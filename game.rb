@@ -5,15 +5,18 @@ require './scorecard'
 
 
 class Game
-    def initialize(player_team, player_team_name)
+    def initialize(player_team, player_team_name, overs, target)
         @player_team = player_team
         @player_team_name = player_team_name
-        scorecard = Scorecard.new
+        @overs = overs
+        @target = target
+        @balls = overs.to_i * 6
+        scorecard = Scorecard.new(@balls, @target)
     end
 
 
     def play
-        while Delivery.ball_count < 60
+        while Delivery.ball_count < @balls
             delivery = Delivery.new(@player_team)
             delivery.get_batter
             delivery.batter_skill

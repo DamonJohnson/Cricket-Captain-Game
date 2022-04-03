@@ -7,7 +7,9 @@ require 'tty-table'
 class Scorecard
     attr_accessor :total_runs, :balls
     
-    def initialize
+    def initialize(balls, target)
+        @@balls = balls
+        @@target = target
         @@total_runs = 0
         @@ball = 0
         # @player_team = player_team
@@ -24,8 +26,9 @@ class Scorecard
 
      # Checks the player's score and compares it to the target.
     def self.check_score
+        puts "checking check_score gives @target = #{@@target}"
         # If players score reaches 100, the game ends
-        if @@total_runs >= 100
+        if @@total_runs >= @@target
             puts "Congratulations you have won by X wickets"
             Game.end_game
         end
@@ -33,7 +36,7 @@ class Scorecard
     
     # Calculates remaining runs to win the game
     def self.runs_remaining
-        100 - @@total_runs
+        @@target - @@total_runs
     end
 
     # Returns total wickets that have fallen
@@ -53,7 +56,7 @@ class Scorecard
 
     # Returns balls remaining in the innings
     def self.balls_remaining
-        60 - Delivery.ball_count
+        @@balls - Delivery.ball_count
     end
 
     # Retuns the strikerate (runs per 100 balls)
