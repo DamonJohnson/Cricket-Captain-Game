@@ -1,7 +1,8 @@
 require './delivery.rb'
 
 describe Delivery do
-    subject(:testdelivery) { Delivery.new("John Doe") }
+    subject(:testdelivery) { Delivery.new("David Yawner") }
+    
 
     it 'can be instantiated' do
         expect(testdelivery).not_to be_nil
@@ -22,19 +23,4 @@ describe Delivery do
         end
     end
 
- #  Can't get test working for this - need to rethink
-    # describe '#get_shot_selection' do
-    #     it 'returns player input' do
-    #         shot_input = 1
-    #         expect(delivery.get_shot_selection).to be_between(1,5)
-    #     end
-    # end
-
-    describe '#wicket_calc' do
-        it 'returns an integer value that determines whether batter is out or not' do
-            # expect(testdelivery.wicket_calc).to be_an_integer
-            # expect(testdelivery.wicket_calc).to be_between(-8,43)
-        end
-    end
-    
 end
